@@ -1,0 +1,16 @@
+.Login {
+    padding: 60px 0;
+}
+
+.Login form {
+    margin: 0 auto;
+    max-width: 320px;
+    color: #ccc;
+}
+
+
+@media all and (max-width: 480px) {
+    .Login form {
+        width: 75%;
+    }
+}
