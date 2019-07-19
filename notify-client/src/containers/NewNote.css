@@ -1,0 +1,19 @@
+.NewNote form {
+    padding-bottom: 15px;
+    padding-top: 20px;
+    color: #ccc;
+}
+
+.NewNote form textarea {
+    height: 300px;
+    font-size: 22px;
+}
+
+
+@media all and (max-width: 480px) {
+    .NewNote form textarea{
+        height: 200px;
+        font-size: 16px;
+    }
+}
+
