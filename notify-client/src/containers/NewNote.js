@@ -4,6 +4,7 @@ import { API } from 'aws-amplify';
 import LoaderButton from '../components/LoaderButton';
 import config from '../config';
 import './NewNote.css';
+import { s3Upload } from '../libs/awsLib';
 
 
 export default class NewNote extends Component {
@@ -44,13 +45,16 @@ export default class NewNote extends Component {
         this.setState({ isLoading: true });
       
         try {
-          await this.createNote({
-            content: this.state.content
-          });
-          this.props.history.push("/");
+            const attachment = this.file ? await s3Upload(this.file) : null;
+
+            await this.createNote({
+                attachment,
+                content: this.state.content
+            });
+            this.props.history.push("/");
         } catch (e) {
-          alert(e);
-          this.setState({ isLoading: false });
+            alert(e);
+            this.setState({ isLoading: false });
         }
     }
       
@@ -59,10 +63,7 @@ export default class NewNote extends Component {
             body: note
         });
     }
-
     
-
-
 
     render() {
         return (
