@@ -1,0 +1,21 @@
+.Signup {
+    padding: 60px 0;
+  }
+
+  .Signup form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .Signup form span.help-block {
+    font-size: 14px;
+    padding-bottom: 10px;
+    color: #999;
+  }
+
+
+  @media all and (max-width: 480px) {
+      .Signup form {
+          max-width: 75%;
+      }
+  }
