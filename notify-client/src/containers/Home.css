@@ -12,4 +12,19 @@
     color: #ccc;
     font-size: 1.3rem;
   }
+
+  .notes {
+    color: #ddd;
+  }
+  
+  .Home .notes h4 {
+    font-weight: 600;
+    overflow: hidden;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .Home .notes p {
+    color: #ccc;
+  }
   
