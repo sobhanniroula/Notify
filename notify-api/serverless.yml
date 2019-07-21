@@ -1,22 +1,26 @@
 service: notify-api
 
+# Create an optimized package for our functions
+package:
+  individually: true
+
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
-  - serverless-webpack
+  - serverless-webpack # Package our functions with Webpack
   - serverless-offline
 
 # serverless-webpack configuration
 # Enable auto-packing of external modules
-custom:
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
+# custom:
+#   webpack:
+#     webpackConfig: ./webpack.config.js
+#     includeModules: true
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: prod
-  region: us-east-1
+  region: us-east-2
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -30,7 +34,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-1:*:*"
+      Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
