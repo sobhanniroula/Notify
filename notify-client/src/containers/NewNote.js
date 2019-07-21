@@ -83,7 +83,7 @@ export default class NewNote extends Component {
                     <LoaderButton 
                         block
                         bsStyle="primary"
-                        bsSize="medium"
+                        bsSize="large"
                         disabled={!this.validateForm()}
                         type="submit"
                         isLoading={this.state.isLoading}
