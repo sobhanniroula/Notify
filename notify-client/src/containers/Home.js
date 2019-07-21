@@ -48,10 +48,7 @@ export default class Home extends Component {
           :
           <LinkContainer key="new" to="/notes/new">
             <ListGroupItem>
-              <h4>
-                <b>{"\uFF0B"}</b>
-                Create a new note
-              </h4>
+              <h4><b>{"\uFF0B"}</b> Create a new note</h4>
             </ListGroupItem>
           </LinkContainer>
     );
