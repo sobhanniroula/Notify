@@ -59,7 +59,7 @@ export default class NewNote extends Component {
     }
       
     createNote(note) {
-        return API.post("notify", "/notes", {
+        return API.post("notify-api", "/notes", {
             body: note
         });
     }

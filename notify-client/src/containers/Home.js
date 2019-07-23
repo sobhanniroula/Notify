@@ -34,7 +34,7 @@ export default class Home extends Component {
   }
 
   notes() {
-    return API.get('notify', '/notes');
+    return API.get('notify-api', '/notes');
   }
 
   renderNotesList(notes) {

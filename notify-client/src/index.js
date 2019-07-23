@@ -26,7 +26,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "notify",
+        name: "notify-api",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       },
