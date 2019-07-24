@@ -4,6 +4,10 @@ export default {
     REGION: "eu-central-1",
     BUCKET: "notify-uploads"
   },
+  // apiGateway: {
+  //   REGION: "us-east-1",
+  //   URL: "https://x0pbyub7ya.execute-api.us-east-1.amazonaws.com/prod"
+  // },
   apiGateway: {
     REGION: "us-east-2",
     URL: "https://jdnakm8zd3.execute-api.us-east-2.amazonaws.com/prod"
