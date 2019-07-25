@@ -27,4 +27,12 @@
   .Home .notes p {
     color: #ccc;
   }
+
+  .Home .lander div {
+    padding-top: 50px;
+  }
+  .Home .lander div a:first-child {
+    margin-right: 15px;
+  }
+  
   
