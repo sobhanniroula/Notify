@@ -1,21 +1,17 @@
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
-    REGION: "eu-central-1",
-    BUCKET: "notify-uploads"
+    REGION: "us-east-1",
+    BUCKET: "notify-uploads-bucket"
   },
-  // apiGateway: {
-  //   REGION: "us-east-1",
-  //   URL: "https://x0pbyub7ya.execute-api.us-east-1.amazonaws.com/prod"
-  // },
   apiGateway: {
-    REGION: "us-east-2",
-    URL: "https://jdnakm8zd3.execute-api.us-east-2.amazonaws.com/prod"
+    REGION: "us-east-1",
+    URL: "https://bxq8l2ywq2.execute-api.us-east-1.amazonaws.com/prod"
   },
   cognito: {
-    REGION: "us-east-2",
-    USER_POOL_ID: "us-east-2_JEebIEi7r",
-    APP_CLIENT_ID: "7ov4mfia5a0vtdcif020mbp0d7",
-    IDENTITY_POOL_ID: "us-east-2:1a4a1f47-602a-4b3e-988d-51b170705a94"
+    REGION: "us-east-1",
+    USER_POOL_ID: "us-east-1_HyYTFeT6T",
+    APP_CLIENT_ID: "468kpe2k4168vblebvvmu2eeu0",
+    IDENTITY_POOL_ID: "us-east-1:4fa8354c-8baa-4c93-b31b-9520acd3d047"
   }
 };

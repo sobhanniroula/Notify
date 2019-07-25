@@ -1,26 +1,18 @@
-service: notify-api
+service: notes-app-api
 
 # Create an optimized package for our functions
 package:
   individually: true
 
-# Use the serverless-webpack plugin to transpile ES6
 plugins:
-  - serverless-webpack # Package our functions with Webpack
+  - serverless-bundle # Package our functions with Webpack
   - serverless-offline
-
-# serverless-webpack configuration
-# Enable auto-packing of external modules
-# custom:
-#   webpack:
-#     webpackConfig: ./webpack.config.js
-#     includeModules: true
 
 provider:
   name: aws
   runtime: nodejs8.10
   stage: prod
-  region: us-east-2
+  region: us-east-1
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -34,7 +26,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:us-east-2:*:*"
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
@@ -53,6 +45,9 @@ functions:
           authorizer: aws_iam
 
   get:
+    # Defines an HTTP API endpoint that calls the main function in get.js
+    # - path: url path is /notes/{id}
+    # - method: GET request
     handler: get.main
     events:
       - http:
@@ -62,6 +57,9 @@ functions:
           authorizer: aws_iam
 
   list:
+    # Defines an HTTP API endpoint that calls the main function in list.js
+    # - path: url path is /notes
+    # - method: GET request
     handler: list.main
     events:
       - http:
@@ -71,6 +69,9 @@ functions:
           authorizer: aws_iam
 
   update:
+    # Defines an HTTP API endpoint that calls the main function in update.js
+    # - path: url path is /notes/{id}
+    # - method: PUT request
     handler: update.main
     events:
       - http:
@@ -80,6 +81,9 @@ functions:
           authorizer: aws_iam
 
   delete:
+    # Defines an HTTP API endpoint that calls the main function in delete.js
+    # - path: url path is /notes/{id}
+    # - method: DELETE request
     handler: delete.main
     events:
       - http:
@@ -87,6 +91,7 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+
 
 # Create our resources with separate CloudFormation templates
 resources:
