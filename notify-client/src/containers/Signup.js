@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { HelpBlock, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import LoaderButton from '../components/LoaderButton';
-import './Signup.css';
 import { Auth } from 'aws-amplify';
+import FacebookButton from "../components/FacebookButton";
+import './Signup.css';
 
 export default class Signup extends Component {
     constructor(props) {
@@ -29,6 +30,11 @@ export default class Signup extends Component {
     validateConfirmationForm() {
         return this.state.confirmationCode.length > 0;
     }
+
+    handleFbLogin = () => {
+        this.props.userHasAuthenticated(true);
+    };
+      
 
     handleChange = event => {
         this.setState({
@@ -153,7 +159,10 @@ export default class Signup extends Component {
 
     render() {
         return (
-            <div className="Signup">
+            <div className="Signup container">
+                <FacebookButton onLogin={this.handleFbLogin} />
+                <hr />
+
                 {this.state.newUser === null 
                     ? this.renderForm()
                     : this.renderConfirmationForm()}

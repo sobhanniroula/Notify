@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './Login.css';
 import { Auth } from 'aws-amplify';
 import LoaderButton from '../components/LoaderButton';
+import FacebookButton from "../components/FacebookButton";
 
 
 export default class Login extends Component {
@@ -44,10 +45,17 @@ export default class Login extends Component {
         }
     }
 
+    handleFbLogin = () => {
+        this.props.userHasAuthenticated(true);
+    };
+      
+
 
     render() {
         return (
-            <div className="Login">
+            <div className="Login container">
+                <FacebookButton onLogin={this.handleFbLogin} />
+                <hr />
                 <form onSubmit={this.handleSubmit}>
                     <FormGroup controlId="email" bsSize="large">
                         <ControlLabel>Email</ControlLabel>
