@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { API, Storage } from "aws-amplify";
-import { s3Upload } from "../libs/awsLib";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { s3Upload } from "../libs/awsLib";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
 import "./Notes.css";
@@ -14,11 +14,11 @@ export default class Notes extends Component {
     this.file = null;
 
     this.state = {
-        isLoading: null,
-        isDeleting: null,
-        note: null,
-        content: "",
-        attachmentURL: null
+      isLoading: null,
+      isDeleting: null,
+      note: null,
+      content: "",
+      attachmentURL: null
     };
   }
 
@@ -43,9 +43,9 @@ export default class Notes extends Component {
   }
 
   getNote() {
-    return API.get("notify", `/notes/${this.props.match.params.id}`);
+    return API.get("notes", `/notes/${this.props.match.params.id}`);
   }
-
+  
   validateForm() {
     return this.state.content.length > 0;
   }
@@ -65,7 +65,7 @@ export default class Notes extends Component {
   }
   
   saveNote(note) {
-    return API.put("notify", `/notes/${this.props.match.params.id}`, {
+    return API.put("notes", `/notes/${this.props.match.params.id}`, {
       body: note
     });
   }
@@ -96,10 +96,10 @@ export default class Notes extends Component {
       alert(e);
       this.setState({ isLoading: false });
     }
-  }
+  }  
   
   deleteNote() {
-    return API.del("notify", `/notes/${this.props.match.params.id}`);
+    return API.del("notes", `/notes/${this.props.match.params.id}`);
   }
   
   handleDelete = async event => {
@@ -125,9 +125,10 @@ export default class Notes extends Component {
   }
   
   
+
   render() {
     return (
-      <div className="Notes">
+      <div className="Notes container">
         {this.state.note &&
           <form onSubmit={this.handleSubmit}>
             <FormGroup controlId="content">
@@ -178,4 +179,5 @@ export default class Notes extends Component {
       </div>
     );
   }
+  
 }
