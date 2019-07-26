@@ -29,17 +29,6 @@ class App extends Component {
       }
     }
     this.setState({ isAuthenticating: false });
-    // try {
-    //   await Auth.currentSession();
-    //   this.userHasAuthenticated(true);
-    // } catch(e) {
-    //   if (e !== 'No current user') {
-    //     alert(e);
-    //   }
-    // }
-    // this.setState({
-    //   isAuthenticating: false
-    // });
   }
 
   loadFacebookSDK() {

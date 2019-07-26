@@ -116,43 +116,49 @@ export default class Signup extends Component {
 
     renderForm() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <FormGroup controlId="email" bsSize="large">
-                    <ControlLabel>Email</ControlLabel>
-                    <FormControl
-                        autoFocus
-                        type="email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
+            <div>
+                <FacebookButton onLogin={this.handleFbLogin} />
+                <hr />
+
+                <form onSubmit={this.handleSubmit}>
+                    <FormGroup controlId="email" bsSize="large">
+                        <ControlLabel>Email</ControlLabel>
+                        <FormControl
+                            autoFocus
+                            type="email"
+                            value={this.state.email}
+                            onChange={this.handleChange}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="password" bsSize="large">
+                        <ControlLabel>Password</ControlLabel>
+                        <FormControl
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="confirmPassword" bsSize="large">
+                        <ControlLabel>Confirm Password</ControlLabel>
+                        <FormControl
+                            type="password"
+                            value={this.state.confirmPassword}
+                            onChange={this.handleChange}
+                        />
+                    </FormGroup>
+                    <LoaderButton
+                        block
+                        bsStyle="danger"
+                        bsSize="medium"
+                        disabled={!this.validateForm()}
+                        type="submit"
+                        isLoading={this.state.isLoading}
+                        text="Signup"
+                        loadingText="Signing up…"
                     />
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <ControlLabel>Password</ControlLabel>
-                    <FormControl
-                        type="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
-                <FormGroup controlId="confirmPassword" bsSize="large">
-                    <ControlLabel>Confirm Password</ControlLabel>
-                    <FormControl
-                        type="password"
-                        value={this.state.confirmPassword}
-                        onChange={this.handleChange}
-                    />
-                </FormGroup>
-                <LoaderButton
-                    block
-                    bsStyle="danger"
-                    bsSize="medium"
-                    disabled={!this.validateForm()}
-                    type="submit"
-                    isLoading={this.state.isLoading}
-                    text="Signup"
-                    loadingText="Signing up…"
-                />
-            </form>
+                </form>
+            </div>
+            
         );
     }
 
@@ -160,9 +166,6 @@ export default class Signup extends Component {
     render() {
         return (
             <div className="Signup container">
-                <FacebookButton onLogin={this.handleFbLogin} />
-                <hr />
-
                 {this.state.newUser === null 
                     ? this.renderForm()
                     : this.renderConfirmationForm()}
